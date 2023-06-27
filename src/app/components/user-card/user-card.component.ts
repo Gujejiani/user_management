@@ -32,6 +32,7 @@ export class UserCardComponent {
   @Input() buttonText = '';
   @Input() detailPage = false;
   @Input() showBonusCount = false;
+  @Input() title ='User Detail'
   @Output() buttonClicked = new EventEmitter<MOActionTypes>();
 
   ACTION_TYPES = MOActionTypes;
