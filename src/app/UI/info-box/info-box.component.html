@@ -1,0 +1,9 @@
+<div
+  [@shakeAnimation]="buttonState"
+  (mouseenter)="onMouseEnter()"
+  (mouseleave)="onMouseLeave()"
+  class="info-box"
+>
+  <span class="info-box__text">No users found</span>
+  <button (click)="onClick()" mat-raised-button color="primary">CREATE</button>
+</div>

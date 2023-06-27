@@ -1,0 +1,8 @@
+<ng-container *ngIf="modalInfo$ | async as modalInfo">
+  <app-info-modal
+    *ngIf="modalInfo?.message"
+    [error]="modalInfo.error"
+    [message]="modalInfo.message"
+    (clickAction)="closePopup(modalInfo?.navTo)"
+  ></app-info-modal>
+</ng-container>

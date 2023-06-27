@@ -1,0 +1,52 @@
+.user{
+  flex-direction: column;
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+  background-color: var(--color-grey);
+  margin: auto;
+  border-radius: 4px;
+  padding: 50px;
+  position: relative;
+  &__title{
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    @media screen and (max-width: 768px) {
+     margin-top: 60px;
+
+    }
+  }
+  &__info{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin: auto;
+    max-width: 740px;
+    width: 100%;
+    margin-top: 40px;
+
+    @media screen and (max-width: 768px) {
+      justify-content: center;
+
+    }
+  }
+
+
+
+  &__card{
+
+    max-width: 350px;
+    width: 100%;
+
+  }
+
+  &__paginator{
+    margin-top: 20px;
+    padding: 0 80px;
+
+
+  }
+
+}

@@ -1,0 +1,54 @@
+<app-form-component>
+  <form
+    [formGroup]="formData"
+    (ngSubmit)="onSubmit(formDirective)"
+    #formDirective="ngForm"
+    class="form"
+  >
+    <h2 class="form__title">Crate Bonus</h2>
+
+    <mat-form-field>
+      <mat-label>USER ID</mat-label>
+      <mat-select formControlName="userId">
+        <mat-option *ngFor="let user of users$ | async" [value]="user._id">
+          {{ user._id + " " + user.name }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Bonus Type</mat-label>
+      <mat-select formControlName="type">
+        <mat-option *ngFor="let type of bonusTypes" [value]="type">{{
+          type
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="showCurrency">
+      <mat-label>Currency</mat-label>
+      <mat-select formControlName="currency">
+        <mat-option *ngFor="let currency of currencies" [value]="currency">{{
+          currency
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Bonus Amount</mat-label>
+      <input formControlName="bonusAmount" matInput />
+      <mat-error *ngIf="showErrorInfo('bonusAmount')">
+        Bonus Amount Must be a positive number
+      </mat-error>
+    </mat-form-field>
+
+    <button
+      class="form__button"
+      [disabled]="!formData.valid || (loading$ | async)"
+      mat-raised-button
+      color="primary"
+    >
+      {{ (loading$ | async) ? "Creating..." : "Create" }}
+    </button>
+  </form>
+</app-form-component>

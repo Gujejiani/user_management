@@ -1,0 +1,22 @@
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title> {{ title }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="card__content">
+    <ng-content></ng-content>
+  </mat-card-content>
+  <mat-card-actions class="card__buttons">
+    <button
+      (click)="onButtonClick()"
+      class="form__button"
+      mat-raised-button
+      color="primary"
+    >
+      {{ buttonText }}
+    </button>
+
+    <ng-container *ngIf="editButtonsTemplate">
+      <ng-container *ngTemplateOutlet="editButtonsTemplate"></ng-container>
+    </ng-container>
+  </mat-card-actions>
+</mat-card>

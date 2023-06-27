@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 8px 0;
+}
+
+p {
+  margin: 0;
+}
+a{
+  text-decoration: none;
+  color: var(--color-white);
+  cursor: pointer;
+  &:hover{
+    opacity: 0.9;
+  }
+
+}
+
+html, body { height: 100%;  }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;  }
+:root {
+ --primary: #1976d2;
+ --color-white: #fff;
+ --color-grey: rgb(245, 245, 245);
+ --hover-primary: rgb(238, 238, 238);
+ --accent: #ff4081;
+
+}
+*{
+  box-sizing: border-box;
+}

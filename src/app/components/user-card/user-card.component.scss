@@ -1,0 +1,38 @@
+.user-card{
+  display: flex;
+
+  // justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 40px;
+  width: 100%;
+  &__img{
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: auto;
+  }
+  &__card{
+    width: 100%;
+
+    // background-color: red;
+
+  }
+  &__name{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    width: 100%;
+    font-weight: bold;
+  }
+  &__bonuses{
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    padding-bottom: 20px;
+
+  }
+  &__button{
+    flex: 1;
+  }
+}

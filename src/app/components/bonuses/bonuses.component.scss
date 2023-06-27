@@ -1,0 +1,7 @@
+.bonuses{
+  display: flex;
+  align-items: center;
+  &__icon{
+    cursor: pointer;
+  }
+}

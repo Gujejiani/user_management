@@ -1,0 +1,22 @@
+<div class="bonuses">
+  Bonuses:
+  <ng-container *ngIf="bonuses.length; else noBonus">
+    <mat-icon
+      class="bonuses__icon"
+      *ngFor="let bonus of bonuses"
+      [disableVisual]="extractedBonusIds.includes(bonus._id)"
+      aria-hidden="false"
+      [fontIcon]="!bonus.iconName ? 'rocket' : bonus.iconName"
+      [matTooltip]="
+        bonus.type +
+        ', amount of: ' +
+        bonus.amount +
+        (bonus.type === ICON_TYPES.MONEY ? ' currency: ' + bonus.currency : '')
+      "
+      aria-label="Button that displays a tooltip when focused or hovered over"
+      (click)="onBonusClick(bonus._id)"
+    >
+    </mat-icon>
+  </ng-container>
+</div>
+<ng-template #noBonus> 0 </ng-template>

@@ -1,0 +1,31 @@
+<div class="user-detail">
+  <ng-container *ngIf="user$ | async as user">
+    <app-user-card
+      class="user-detail__card"
+      [buttonText]="'ADD BONUS'"
+      [user]="user"
+      [detailPage]="true"
+      (buttonClicked)="onButtonClick($event)"
+    >
+      <div class="user-detail__item">
+        <mat-icon aria-hidden="false" fontIcon="home"> </mat-icon> -
+        {{ user.address }}
+      </div>
+      <div class="user-detail__item">
+        <mat-icon aria-hidden="false" fontIcon="phone"> </mat-icon> -
+        {{ user.phoneNumber }}
+      </div>
+      <div class="user-detail__item">
+        <mat-icon aria-hidden="false" fontIcon="account_circle"> </mat-icon> -
+        {{ user.idNumber }}
+      </div>
+      <div class="user-detail__item">
+        <mat-icon
+          aria-hidden="false"
+          [fontIcon]="genderIcon(user.gender)"
+        ></mat-icon>
+        -{{ user.gender }}
+      </div>
+    </app-user-card>
+  </ng-container>
+</div>

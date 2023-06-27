@@ -1,0 +1,9 @@
+<div class="modal">
+  <div (click)="onClick()" class="modal-overlay"></div>
+  <div class="modal-content">
+    <div class="message" [ngClass]="{ 'message--error': error }">
+      {{ message }}
+    </div>
+    <button (click)="onClick()" mat-raised-button color="primary">OK</button>
+  </div>
+</div>

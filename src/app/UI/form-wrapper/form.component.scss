@@ -1,0 +1,44 @@
+
+.wrapper{
+  padding: 40px;
+  max-width: 800px;
+  margin: auto;
+
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 20px;
+  align-items: center;
+  &__title{
+    text-transform: uppercase;
+  }
+  &-field{
+    display: inline-flex;
+    flex-direction: column;
+    min-width: 0;
+    text-align: left;
+    width: 90%;
+    height: 56px;
+    background-color: var(--color-grey);
+     padding: 5px 16px  ;
+    justify-content: space-between;
+    border-radius: 4px 4px 0 0;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 15px;
+    &:hover{
+      background-color: var(hover-primary);
+    }
+  }
+
+  &__button{
+    margin-top: 40px;
+    width: 80%;
+  }
+}
+
+
+mat-form-field{
+  width: 90%;
+}

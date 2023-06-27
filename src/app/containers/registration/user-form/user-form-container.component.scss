@@ -1,0 +1,19 @@
+.form{
+
+  &__buttons{
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    padding: 0 35px;
+
+    button{
+      flex: 1;
+      width: 100%;
+    }
+  }
+  &__bonuses{
+      display: flex;
+      width: 100%;
+      padding: 20px 35px;
+  }
+}

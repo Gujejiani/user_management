@@ -1,0 +1,56 @@
+<div class="user" *ngIf="users$ | async as users">
+  <app-filters-sort
+    *ngIf="!(loading$ | async) && users.length"
+    [sieveConfig]="sieveConfig"
+    [filterEnabled]="filterEnabled"
+    [sortEnabled]="sortEnabled"
+    (filterClicked)="toggleFilter()"
+    (sortClicked)="toggleSort()"
+    (maleSelected)="genderSelected(GENDER.MALE)"
+    (femaleSelected)="genderSelected(GENDER.FEMALE)"
+    (bonusSelected)="bonusSelected()"
+  ></app-filters-sort>
+  <h2 class="user__title">Registered USers</h2>
+
+  <app-loading *ngIf="loading$ | async"></app-loading>
+  <app-info-box
+    *ngIf="!(loading$ | async) && !users.length"
+    (clickAction)="navToCreateUser()"
+  ></app-info-box>
+  <ng-container *ngIf="pagingData$ | async as pagingData">
+    <div class="user__info">
+      <app-user-card
+        class="user__card"
+        *ngFor="
+          let user of users
+            | sievePipe : filterEnabled : sortEnabled : sieveConfig
+            | pagingPipe : pagingData.curPageIndex : pagingData.endIndex;
+          trackBy: trackByFn
+        "
+        [showBonusCount]="true"
+        [user]="user"
+        [buttonText]="'VIEW DETAIL'"
+        (buttonClicked)="navigateToDetail(user._id)"
+      ></app-user-card>
+    </div>
+    <div class="user__paginator">
+      <mat-paginator
+        *ngIf="!(loading$ | async) && users.length"
+        #paginator
+        class="demo-paginator"
+        (page)="handlePageEvent($event)"
+        [length]="
+          (users | sievePipe : filterEnabled : sortEnabled : sieveConfig).length
+        "
+        [pageSize]="pagingData.pageSize"
+        [disabled]="false"
+        [showFirstLastButtons]="false"
+        [pageSizeOptions]="[]"
+        [hidePageSize]="true"
+        [pageIndex]="pagingData.pageIndex"
+        aria-label="Select page"
+      >
+      </mat-paginator>
+    </div>
+  </ng-container>
+</div>

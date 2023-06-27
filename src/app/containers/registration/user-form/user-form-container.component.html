@@ -1,0 +1,103 @@
+<app-form-component [title]="'User Registration'">
+  <form
+    [formGroup]="formData"
+    (ngSubmit)="onSubmit(formDirective)"
+    #formDirective="ngForm"
+    class="form"
+  >
+    <h2 class="form__title">
+      {{ editMode ? "EDIT USER" : "USER REGISTRATION" }}
+    </h2>
+
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input formControlName="name" matInput />
+
+      <mat-error *ngIf="showErrorInfo('name')">
+        Name should be more than 2 characters and less than 50.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Last Name</mat-label>
+      <input formControlName="lastName" matInput />
+      <mat-error *ngIf="showErrorInfo('lastName')">
+        Last name should be more than 2 characters and less than 50.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Gender</mat-label>
+      <mat-select formControlName="gender">
+        <mat-option value="Male">Male</mat-option>
+        <mat-option value="Female">Female</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>ID Number</mat-label>
+      <input formControlName="idNumber" matInput />
+      <mat-error *ngIf="showErrorInfo('idNumber')">
+        ID number must consists 11 number
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Phone Number</mat-label>
+      <input formControlName="phoneNumber" matInput />
+      <mat-error *ngIf="showErrorInfo('phoneNumber')">
+        Phone number must consists 9 number
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Address</mat-label>
+      <input formControlName="address" matInput />
+    </mat-form-field>
+
+    <div class="form-field">
+      <label for="photo">Upload Image</label>
+      <input
+        formControlName="photo"
+        id="photo"
+        type="file"
+        name="fileInput"
+        accept="image/*"
+      />
+    </div>
+    <div class="form__bonuses">
+      <app-bonuses
+        *ngIf="!!editMode"
+        (bonusClicked)="bonusClicked($event)"
+        [extractedBonusIds]="extractedBonusIds"
+        [bonuses]="user?.bonuses ?? []"
+      ></app-bonuses>
+    </div>
+    <div class="form__buttons">
+      <button
+        class="form__button"
+        [disabled]="
+          editMode ? !formIsEdited() : !formData.valid || (loading$ | async)
+        "
+        mat-raised-button
+        color="primary"
+      >
+        {{
+          (loading$ | async)
+            ? "Processing..."
+            : editMode
+            ? "Update"
+            : "Register"
+        }}
+      </button>
+      <button
+        [@shakeAnimation]="buttonState"
+        (mouseenter)="onMouseEnter()"
+        (mouseleave)="onMouseLeave()"
+        *ngIf="editMode"
+        class="form__button"
+        mat-raised-button
+        color="warn"
+        (click)="onDeleteClicked()"
+      >
+        {{ "DELETE USER" }}
+      </button>
+    </div>
+  </form>
+</app-form-component>

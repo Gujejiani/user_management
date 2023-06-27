@@ -1,0 +1,55 @@
+<div class="wrapper">
+  <div class="filter-sort">
+    <div class="filter-sort__buttons">
+      <button
+        [disableVisual]="!filterEnabled"
+        (click)="toggleFilter()"
+        mat-raised-button
+        color="accent"
+      >
+        {{ "FILTER" }}
+      </button>
+      <button
+        [disableVisual]="!sortEnabled"
+        (click)="toggleSort()"
+        mat-raised-button
+        color="accent"
+      >
+        {{ "SORT" }}
+      </button>
+    </div>
+    <ul class="filter-sort__items">
+      <li
+        (click)="onBonusSelected()"
+        [disableClick]="sieveDisabled"
+        [disableVisual]="sieveDisabled"
+        class="filter-sort__item"
+        [ngClass]="{ 'filter-sort__item-selected': sieveConfig.hasBonus }"
+      >
+        <mat-icon aria-hidden="false" fontIcon="rocket"></mat-icon>
+      </li>
+      <li
+        [disableClick]="sieveDisabled"
+        [disableVisual]="sieveDisabled"
+        (click)="onMaleSelect()"
+        class="filter-sort__item"
+        [ngClass]="{
+          'filter-sort__item-selected': sieveConfig.gender === GENDER.MALE
+        }"
+      >
+        <mat-icon aria-hidden="false" fontIcon="man"></mat-icon>
+      </li>
+      <li
+        [disableClick]="sieveDisabled"
+        [disableVisual]="sieveDisabled"
+        (click)="onFemaleSelect()"
+        class="filter-sort__item"
+        [ngClass]="{
+          'filter-sort__item-selected': sieveConfig.gender === GENDER.FEMALE
+        }"
+      >
+        <mat-icon aria-hidden="false" fontIcon="woman"></mat-icon>
+      </li>
+    </ul>
+  </div>
+</div>
